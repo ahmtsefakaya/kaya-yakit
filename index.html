@@ -113,7 +113,7 @@ function ciz(v,metin){
   $('dk').classList.toggle('gizli',!v.donus.length);
   $('donus').innerHTML=v.donus.map(y=>`<div class="yon">🧭 ${esc(y.yon)}</div>`+y.duraklar.map((m,i)=>durak(m,String.fromCharCode(65+i),1)).join('')).join('');
   if(map)map.remove();map=L.map('harita',{zoomControl:false});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap, © CARTO'}).addTo(map);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:18}).addTo(map);
   const pts=[[v.bas.lat,v.bas.lng],...v.gidis.map(m=>[m.lat,m.lng]),[v.teslim.lat,v.teslim.lng]];
   L.polyline(pts,{color:'#f5b301',weight:3,dashArray:'6 6'}).addTo(map);
   const ik=(t,c)=>L.divIcon({className:'',html:`<div style="background:${c};color:#111;border-radius:50%;width:26px;height:26px;display:grid;place-items:center;font-weight:800;border:2px solid #fff">${t}</div>`,iconSize:[26,26],iconAnchor:[13,13]});
