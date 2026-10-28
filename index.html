@@ -38,8 +38,10 @@ button{font:inherit;cursor:pointer}
 .hata{background:#3a1515;border:1px solid #7a1f1f;border-radius:12px;padding:12px;color:#f5c2c2}
 .gizli{display:none}.not{font-size:13px;color:#9aa4b2;margin-top:8px}
 details{margin-top:10px}summary{color:#9aa4b2;font-size:14px}pre{white-space:pre-wrap;font:13px/1.45 ui-monospace,monospace;color:#c7cfda}
+.ort{margin:6px 14px 0;font-size:11.5px;color:#8f9aa8;line-height:1.5}.ort b{color:#c7cfda;font-weight:600}.ort .u{color:#e07b7b}.ort .d{color:#7bc98a}.ort i{font-style:normal;opacity:.6}
 </style></head><body>
 <header><b>⛽ KAYA Yakıt</b><span id="kim"></span></header>
+<div class="ort" id="ort"></div>
 <main>
 <div id="giris" class="kart gizli"><div class="hata">Bu bağlantı geçersiz. Ahmet'ten sana özel linki iste.</div></div>
 <div id="form">
@@ -132,5 +134,9 @@ function ciz(v,metin){
   map.fitBounds(pts,{padding:[24,24]})}
 $('yeni').onclick=()=>{goster('form');konumAl()};
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');
+fetch('ortalama.json?'+Math.floor(Date.now()/36e5),{cache:'no-store'}).then(r=>r.json()).then(o=>{
+  const f=b=>`<b>${b.ad}</b> ${b.fiyat.toFixed(2)}<span class="${b.fark>0?'u':'d'}">${b.fark>0?'▲':b.fark<0?'▼':'•'}${Math.abs(Math.round(b.fark*100))}¢</span>`;
+  const L=o.bolgeler.filter(b=>!/CA hariç|California/.test(b.ad));
+  $('ort').innerHTML='🇺🇸 Dizel: '+L.map(f).join(' · ')+` <i>(EIA ${o.tarih}, haftalık)</i>`}).catch(()=>{});
 basla();
 </script></body></html>
