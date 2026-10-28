@@ -1,6 +1,6 @@
 {
  "kaynak": "RTS ağı, kart net fiyatı (istasyon başına en düşük), eyalet medyanı",
- "guncelleme": "2026-10-28 06:33 UTC",
+ "guncelleme": "2026-10-28 06:36 UTC",
  "istasyon": 3222,
  "hata": [],
  "bolgeler": [
@@ -86,5 +86,5 @@
   "WV": 6.169,
   "WY": 6.225
  },
- "onceki_guncelleme": null
+ "onceki_guncelleme": "2026-10-28 06:33 UTC"
 }
