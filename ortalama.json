@@ -1,48 +1,90 @@
 {
- "kaynak": "EIA haftalık on-highway dizel",
- "tarih": "10/26/26",
- "onceki": "10/19/26",
- "guncelleme": "2026-10-28 06:14 UTC",
+ "kaynak": "RTS ağı, kart net fiyatı (istasyon başına en düşük), eyalet medyanı",
+ "guncelleme": "2026-10-28 06:33 UTC",
+ "istasyon": 3222,
+ "hata": [],
  "bolgeler": [
   {
    "ad": "ABD",
-   "fiyat": 6.352,
-   "fark": 0.076
+   "fiyat": 6.008,
+   "fark": 0.0
   },
   {
    "ad": "Doğu",
-   "fiyat": 6.079,
-   "fark": 0.095
-  },
-  {
-   "ad": "Midwest",
-   "fiyat": 6.48,
-   "fark": 0.128
+   "fiyat": 6.018,
+   "eyalet": 12,
+   "fark": 0.0
   },
   {
    "ad": "Güney",
-   "fiyat": 5.951,
-   "fark": 0.048
+   "fiyat": 5.749,
+   "eyalet": 8,
+   "fark": 0.0
+  },
+  {
+   "ad": "Midwest",
+   "fiyat": 6.01,
+   "eyalet": 12,
+   "fark": 0.0
   },
   {
    "ad": "Kuzey/Dağ",
-   "fiyat": 6.521,
-   "fark": 0.099
+   "fiyat": 6.228,
+   "eyalet": 6,
+   "fark": 0.0
   },
   {
    "ad": "Batı",
-   "fiyat": 7.329,
-   "fark": -0.065
-  },
-  {
-   "ad": "Batı (CA hariç)",
-   "fiyat": 6.614,
-   "fark": -0.045
-  },
-  {
-   "ad": "California",
-   "fiyat": 8.155,
-   "fark": -0.087
+   "fiyat": 6.793,
+   "eyalet": 5,
+   "fark": 0.0
   }
- ]
+ ],
+ "eyaletler": {
+  "AL": 5.72,
+  "AR": 5.848,
+  "AZ": 6.239,
+  "CA": 8.065,
+  "CO": 6.349,
+  "CT": 6.198,
+  "DE": 6.105,
+  "FL": 5.935,
+  "GA": 5.499,
+  "IA": 5.89,
+  "ID": 6.459,
+  "IL": 6.439,
+  "IN": 6.231,
+  "KS": 5.862,
+  "KY": 5.899,
+  "LA": 5.6,
+  "MD": 6.167,
+  "MI": 6.155,
+  "MN": 5.969,
+  "MO": 5.872,
+  "MS": 5.689,
+  "MT": 5.989,
+  "NC": 5.409,
+  "ND": 6.057,
+  "NE": 5.89,
+  "NJ": 6.221,
+  "NM": 5.89,
+  "NV": 6.599,
+  "NY": 6.345,
+  "OH": 5.979,
+  "OK": 5.809,
+  "ON": 2.719,
+  "OR": 6.184,
+  "PA": 6.485,
+  "SC": 5.679,
+  "SD": 5.917,
+  "TN": 5.723,
+  "TX": 5.704,
+  "UT": 6.453,
+  "VA": 6.005,
+  "WA": 6.879,
+  "WI": 5.853,
+  "WV": 6.169,
+  "WY": 6.225
+ },
+ "onceki_guncelleme": null
 }
