@@ -98,12 +98,14 @@ async function izle(id){
   if(r.durum==='hata'||!r.veri){goster('hk');$('hk').innerHTML=`<div class="hata">${(r.metin||'Plan çıkmadı').replace(/[*_]/g,'')}</div><button class="ana" onclick="location.reload()">Tekrar dene</button>`;return}
   ciz(r.veri,r.metin)}
 const nav=(m)=>`https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lng}&travelmode=driving`;
-let TESLIM=null;
+let TESLIM=null,BAS=null;
 // Trucker Path URL Launcher (resmi): truckerpath://cal_route?d_addr=LAT,LNG&p_addr=LAT,LNG  (Android alt cizgili)
 // Gidis duragi: konum -> yakit duragi (ara durak) -> teslim. Donus duragi / teslim yoksa: sadece duraga git.
 const tpUrl=q=>/android/i.test(navigator.userAgent)?`intent://cal_route?${q}#Intent;scheme=truckerpath;package=com.sixdays.truckerpath;end`:`truckerpath://cal_route?${q}`;
-const tp=(m)=>tpUrl(`d_addr=${m.lat},${m.lng}`);                                   // sadece yakit duragi
-const tp2=(m)=>tpUrl(`d_addr=${TESLIM.lat},${TESLIM.lng}&p_addr=${m.lat},${m.lng}`);  // yakit duragi + teslim
+// Trucker Path tek noktali (sadece d_addr) linkte rota acmadi -> baslangic (s_addr) da verilir: plan konumu, yoksa GPS
+const sAddr=()=>{const b=(konum&&konum.lat)?konum:BAS;return b?`s_addr=${b.lat},${b.lng}&`:''};
+const tp=(m)=>tpUrl(`${sAddr()}d_addr=${m.lat},${m.lng}`);                                   // sadece yakit duragi
+const tp2=(m)=>tpUrl(`${sAddr()}d_addr=${TESLIM.lat},${TESLIM.lng}&p_addr=${m.lat},${m.lng}`);  // yakit duragi + teslim
 const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 function durak(m,n,donus){
   const diger=Object.entries(m.diger).filter(([k])=>k!==m.kart).map(([k,v])=>`${k} $${v.toFixed(3)}`).join(' · ');
@@ -112,7 +114,7 @@ function durak(m,n,donus){
   <div class="fiyat">💳 ${m.kart} <b>$${m.fiyat.toFixed(3)}</b>${m.gal?` · ~${m.gal} gal ≈ $${Math.round(m.gal*m.fiyat)}`:''}</div>
   ${diger?`<div class="alt">diğer: ${diger}</div>`:''}${(TESLIM&&!donus)?`<a class="nav" href="${tp2(m)}">🚛 TP: yakıt + teslim</a> `:''}<a class="nav" href="${tp(m)}">🚛 TP: sadece yakıt</a> <a class="nav gm" href="${nav(m)}" target="_blank">🗺 Google Maps</a></div></div>`}
 function ciz(v,metin){
-  TESLIM=(v.teslim&&v.teslim.lat)?v.teslim:null;
+  TESLIM=(v.teslim&&v.teslim.lat)?v.teslim:null;BAS=(v.bas&&v.bas.lat)?v.bas:null;
   goster('sonuc');$('metin').textContent=metin.replace(/[*_]/g,'');
   const tg=v.gidis.reduce((a,m)=>a+m.gal,0),usd=v.gidis.reduce((a,m)=>a+m.gal*m.fiyat,0);
   $('ust').innerHTML=`<span>🚚 ${esc(v.teslim.ad.split('\n').pop())} (${v.teslim.tarih})</span><span>${v.mil} mil</span><span>${v.mpg} mpg</span><span>Depo %${v.yuzde}</span>`+
