@@ -136,7 +136,7 @@ $('yeni').onclick=()=>{goster('form');konumAl()};
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');
 fetch('ortalama.json?'+Math.floor(Date.now()/36e5),{cache:'no-store'}).then(r=>r.json()).then(o=>{
   const f=b=>`<b>${b.ad}</b> ${b.fiyat.toFixed(2)}<span class="${b.fark>0?'u':'d'}">${b.fark>0?'▲':b.fark<0?'▼':'•'}${Math.abs(Math.round(b.fark*100))}¢</span>`;
-  const L=o.bolgeler.filter(b=>!/CA hariç|California/.test(b.ad));
-  $('ort').innerHTML='🇺🇸 Dizel: '+L.map(f).join(' · ')+` <i>(EIA ${o.tarih}, haftalık)</i>`}).catch(()=>{});
+  const L=o.bolgeler;const g=(o.guncelleme||'').slice(5,16).replace('-','/').replace(' ','·');
+  $('ort').innerHTML='💳 RTS net dizel: '+L.map(f).join(' · ')+` <i>(${o.istasyon} istasyon, ${g} UTC, 12 saatlik fark)</i>`}).catch(()=>{});
 basla();
 </script></body></html>
