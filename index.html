@@ -33,6 +33,7 @@ button{font:inherit;cursor:pointer}
 .fiyat{font-size:15px;margin-top:2px}.fiyat b{color:#f5b301}
 .nav{display:inline-block;margin-top:8px;background:#1f7a3d;color:#fff;text-decoration:none;font-weight:700;border-radius:10px;padding:8px 12px;font-size:14px}
 .nav.gm{background:#2f3e5c}
+.ortf{font-size:12px;margin-left:6px}.ortf.d{color:#7bc98a}.ortf.u{color:#e07b7b}
 .yon{font-weight:700;margin:14px 0 2px;color:#93c5fd}
 .ok{background:#12301f;border:1px solid #1f7a3d;border-radius:12px;padding:12px;color:#bdf0cf}
 .hata{background:#3a1515;border:1px solid #7a1f1f;border-radius:12px;padding:12px;color:#f5c2c2}
@@ -113,7 +114,7 @@ function durak(m,n,donus){
   const diger=Object.entries(m.diger).filter(([k])=>k!==m.kart).map(([k,v])=>`${k} $${v.toFixed(3)}`).join(' · ');
   return `<div class="durak"><div class="no ${donus?'d':''}">${n}</div><div class="bilgi"><div class="ad">${esc(m.ad)}</div>
   <div class="alt">${esc(m.sehir)} · ${donus?'teslimden ':''}~${m.mil}. mil</div>
-  <div class="fiyat">💳 ${m.kart} <b>$${m.fiyat.toFixed(3)}</b>${m.gal?` · ~${m.gal} gal ≈ $${Math.round(m.gal*m.fiyat)}`:''}</div>
+  <div class="fiyat">💳 ${m.kart} <b>$${m.fiyat.toFixed(3)}</b>${m.gal?` · ~${m.gal} gal ≈ $${Math.round(m.gal*m.fiyat)}`:''}${m.ort?`<span class="ortf ${m.ort.abd<=0?'d':'u'}">ABD ort. ${m.ort.abd<0?'−':'+'}${Math.abs(m.ort.abd)}¢${m.ort.bolge?` · ${m.ort.bolge} ${m.ort.bolge_cent<0?'−':'+'}${Math.abs(m.ort.bolge_cent)}¢`:''}</span>`:''}</div>
   ${diger?`<div class="alt">diğer: ${diger}</div>`:''}<a class="nav" href="${tp(m)}">🚛 Trucker Path</a> ${(TESLIM&&!donus)?`<a class="nav" href="${tp2(m)}">🚛 TP + teslim</a> `:''}<a class="nav gm" href="${nav(m)}" target="_blank">🗺 Google Maps</a></div></div>`}
 function ciz(v,metin){
   TESLIM=(v.teslim&&v.teslim.lat)?v.teslim:null;BAS=(v.bas&&v.bas.lat)?v.bas:null;
