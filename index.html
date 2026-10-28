@@ -104,7 +104,8 @@ const nav=(m)=>`https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.
 let TESLIM=null,BAS=null;
 // Trucker Path URL Launcher (resmi): truckerpath://cal_route?d_addr=LAT,LNG&p_addr=LAT,LNG  (Android alt cizgili)
 // Gidis duragi: konum -> yakit duragi (ara durak) -> teslim. Donus duragi / teslim yoksa: sadece duraga git.
-const tpUrl=q=>/android/i.test(navigator.userAgent)?`intent://cal_route?${q}#Intent;scheme=truckerpath;package=com.sixdays.truckerpath;end`:`truckerpath://cal_route?${q}`;
+// Android: s_addr/d_addr/p_addr (alt cizgili) + intent://; iOS/iPadOS: saddr/daddr/paddr (alt cizgisiz) — resmi sema
+const tpUrl=q=>/android/i.test(navigator.userAgent)?`intent://cal_route?${q}#Intent;scheme=truckerpath;package=com.sixdays.truckerpath;end`:`truckerpath://cal_route?${q.replace(/\b([sdp])_addr=/g,'$1addr=')}`;
 // Trucker Path tek noktali (sadece d_addr) linkte rota acmadi -> baslangic (s_addr) da verilir: plan konumu, yoksa GPS
 const sAddr=()=>{const b=(konum&&konum.lat)?konum:BAS;return b?`s_addr=${b.lat},${b.lng}&`:''};
 const tp=(m)=>tpUrl(`${sAddr()}d_addr=${m.lat},${m.lng}`);                                   // sadece yakit duragi
