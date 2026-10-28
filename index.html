@@ -107,9 +107,10 @@ let TESLIM=null,BAS=null;
 // Android: s_addr/d_addr/p_addr (alt cizgili) + intent://; iOS/iPadOS: saddr/daddr/paddr (alt cizgisiz) — resmi sema
 const tpUrl=q=>/android/i.test(navigator.userAgent)?`intent://cal_route?${q}#Intent;scheme=truckerpath;package=com.sixdays.truckerpath;end`:`truckerpath://cal_route?${q.replace(/\b([sdp])_addr=/g,'$1addr=')}`;
 // Trucker Path tek noktali (sadece d_addr) linkte rota acmadi -> baslangic (s_addr) da verilir: plan konumu, yoksa GPS
-const sAddr=()=>{const b=(konum&&konum.lat)?konum:BAS;return b?`s_addr=${b.lat},${b.lng}&`:''};
-const tp=(m)=>tpUrl(`${sAddr()}d_addr=${m.lat},${m.lng}`);                                   // sadece yakit duragi
-const tp2=(m)=>tpUrl(`${sAddr()}d_addr=${TESLIM.lat},${TESLIM.lng}&p_addr=${m.lat},${m.lng}`);  // yakit duragi + teslim
+const k6=p=>`${(+p.lat).toFixed(6)},${(+p.lng).toFixed(6)}`;   // dokumandaki gibi 6 hane (uzun ondalik iOS'ta hata verebilir)
+const sAddr=()=>{const b=(konum&&konum.lat)?konum:BAS;return b?`s_addr=${k6(b)}&`:''};
+const tp=(m)=>tpUrl(`${sAddr()}d_addr=${k6(m)}`);                                   // sadece yakit duragi
+const tp2=(m)=>tpUrl(`${sAddr()}d_addr=${k6(TESLIM)}&p_addr=${k6(m)}`);  // yakit duragi + teslim
 const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 function durak(m,n,donus){
   const diger=Object.entries(m.diger).filter(([k])=>k!==m.kart).map(([k,v])=>`${k} $${v.toFixed(3)}`).join(' · ');
