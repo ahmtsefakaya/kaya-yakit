@@ -1,0 +1,48 @@
+{
+ "kaynak": "EIA haftalık on-highway dizel",
+ "tarih": "10/26/26",
+ "onceki": "10/19/26",
+ "guncelleme": "2026-10-28 06:14 UTC",
+ "bolgeler": [
+  {
+   "ad": "ABD",
+   "fiyat": 6.352,
+   "fark": 0.076
+  },
+  {
+   "ad": "Doğu",
+   "fiyat": 6.079,
+   "fark": 0.095
+  },
+  {
+   "ad": "Midwest",
+   "fiyat": 6.48,
+   "fark": 0.128
+  },
+  {
+   "ad": "Güney",
+   "fiyat": 5.951,
+   "fark": 0.048
+  },
+  {
+   "ad": "Kuzey/Dağ",
+   "fiyat": 6.521,
+   "fark": 0.099
+  },
+  {
+   "ad": "Batı",
+   "fiyat": 7.329,
+   "fark": -0.065
+  },
+  {
+   "ad": "Batı (CA hariç)",
+   "fiyat": 6.614,
+   "fark": -0.045
+  },
+  {
+   "ad": "California",
+   "fiyat": 8.155,
+   "fark": -0.087
+  }
+ ]
+}
