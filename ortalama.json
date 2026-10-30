@@ -1,70 +1,70 @@
 {
  "kaynak": "RTS ağı, kart net fiyatı (istasyon başına en düşük), eyalet medyanı",
- "guncelleme": "2026-10-30 06:01 UTC",
+ "guncelleme": "2026-10-30 18:01 UTC",
  "istasyon": 3225,
  "hata": [],
  "bolgeler": [
   {
    "ad": "ABD",
-   "fiyat": 5.989,
-   "fark": 0.06
+   "fiyat": 5.987,
+   "fark": -0.002
   },
   {
    "ad": "Doğu",
    "fiyat": 5.949,
    "eyalet": 12,
-   "fark": 0.01
+   "fark": 0.0
   },
   {
    "ad": "Güney",
-   "fiyat": 5.694,
+   "fiyat": 5.692,
    "eyalet": 8,
-   "fark": 0.013
+   "fark": -0.002
   },
   {
    "ad": "Midwest",
-   "fiyat": 6.095,
+   "fiyat": 6.087,
    "eyalet": 12,
-   "fark": 0.182
+   "fark": -0.008
   },
   {
    "ad": "Kuzey/Dağ",
-   "fiyat": 6.174,
+   "fiyat": 6.177,
    "eyalet": 6,
-   "fark": 0.019
+   "fark": 0.003
   },
   {
    "ad": "Batı",
-   "fiyat": 6.733,
+   "fiyat": 6.739,
    "eyalet": 5,
-   "fark": 0.018
+   "fark": 0.006
   }
  ],
  "eyaletler": {
-  "AL": 5.671,
+  "AL": 5.67,
   "AR": 5.789,
-  "AZ": 6.209,
+  "AZ": 6.239,
   "CA": 7.968,
   "CO": 6.269,
   "CT": 6.107,
   "DE": 5.983,
   "FL": 5.85,
   "GA": 5.449,
-  "IA": 5.818,
+  "IA": 5.804,
   "ID": 6.429,
   "IL": 6.539,
-  "IN": 6.557,
+  "IN": 6.559,
   "KS": 5.789,
   "KY": 5.899,
   "LA": 5.522,
   "MD": 6.069,
-  "MI": 6.548,
+  "MI": 6.545,
   "MN": 5.906,
   "MO": 5.865,
   "MS": 5.605,
   "MT": 5.929,
-  "NC": 5.35,
-  "ND": 5.999,
+  "NC": 5.349,
+  "ND": 5.939,
   "NE": 5.769,
   "NJ": 6.184,
   "NM": 5.847,
@@ -77,14 +77,14 @@
   "PA": 6.407,
   "SC": 5.619,
   "SD": 5.836,
-  "TN": 5.682,
-  "TX": 5.633,
-  "UT": 6.409,
+  "TN": 5.671,
+  "TX": 5.63,
+  "UT": 6.429,
   "VA": 5.933,
   "WA": 6.849,
-  "WI": 6.265,
+  "WI": 6.249,
   "WV": 6.169,
   "WY": 6.16
  },
- "onceki_guncelleme": "2026-10-29 18:01 UTC"
+ "onceki_guncelleme": "2026-10-30 06:01 UTC"
 }
